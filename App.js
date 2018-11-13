@@ -17,6 +17,15 @@ const instructions = Platform.select({
     'Shake or press menu button for dev menu',
 });
 
+import { ApolloProvider } from 'react-apollo'
+import { ApolloClient, HttpLink, InMemoryCache } from 'apollo-client-preset'
+const httpLink = new HttpLink({ uri: 'https://api.graph.cool/simple/v1/cjo67clu7bwfj01944k04cgyp' })
+
+const client = new ApolloClient({
+  link: httpLink,
+  cache: new InMemoryCache()
+})
+
 import LoginScreen from '/Users/anthony/Desktop/Manifest/App6/src/screens/LoginScreen.js';
 import SignUpScreen from '/Users/anthony/Desktop/Manifest/App6/src/screens/SignUpScreen.js'
 import HomeScreen from '/Users/anthony/Desktop/Manifest/App6/src/screens/HomeScreen.js'
@@ -33,7 +42,9 @@ const AppStackNavigator = new StackNavigator({
 export default class App extends React.Component{
   render() {
     return (
-      <AppStackNavigator/>
+      <ApolloProvider client={client}>
+       <AppStackNavigator/>
+      </ApolloProvider>
     );
   }
 }

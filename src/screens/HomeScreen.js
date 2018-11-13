@@ -21,9 +21,9 @@ import  MapScreen  from '/Users/anthony/Desktop/Manifest/App6/src/SwipeScreens/M
 
 
 const AppTabNavigator = createBottomTabNavigator({
-    // ProfileTab: {
-    //     screen: ProfileScreen
-    // },
+    ProfileTab: {
+        screen: ProfileScreen
+    },
     ChatTab: {
         screen: ChatScreen
     },BusinessTab: {
